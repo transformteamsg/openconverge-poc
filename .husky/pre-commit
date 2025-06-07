@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo "Running terragrunt hclfmt check..."
+if terragrunt hclfmt --terragrunt-check; then
+    echo "Terragrunt hclfmt check passed."
+else
+    echo "Terragrunt hclfmt check failed. Running terragrunt hclfmt to fix formatting..."
+    terragrunt hclfmt
+    echo "Formatting fixed. Please review the changes and commit again."
+    exit 1
+fi

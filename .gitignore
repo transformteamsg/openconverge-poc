@@ -1,0 +1,21 @@
+# Environments
+*.env
+*.venv
+*myenv
+*secrets.toml
+.env.combined
+
+# Python
+*__pycache__
+
+# Files
+*.pkl
+*.pdf
+*.files
+*temp_files/
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store

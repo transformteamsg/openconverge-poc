@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /* General heading styles */
+  .markdown-content h1,
+  .markdown-content h2,
+  .markdown-content h3,
+  .markdown-content h4,
+  .markdown-content h5,
+  .markdown-content h6 {
+    font-weight: bold; /* Make all headings bold */
+    margin-top: 1rem; /* Space above headings */
+    margin-bottom: 1rem; /* Space below headings */
+  }
+
+  /* Ensure only the headings in list items are bold */
+  .markdown-content ol > li > p:first-of-type,
+  .markdown-content ul > li > p:first-of-type {
+    font-weight: bold; /* Make the first paragraph of each list item bold */
+  }
+
+  /* General rules for ordered lists */
+  .markdown-content ol {
+    margin-top: 1rem; /* Space above the ordered list */
+    margin-bottom: 1rem; /* Space below the ordered list */
+    padding-left: 1.5em; /* Indentation for the list */
+    list-style-type: decimal; /* Ensure it's a numbered list */
+  }
+
+  /* General rules for unordered lists */
+  .markdown-content ul {
+    margin-top: 1rem; /* Space above the unordered list */
+    margin-bottom: 1rem; /* Space below the unordered list */
+    padding-left: 1.5em; /* Indentation for the list */
+    list-style-type: disc; /* Ensure it's a bulleted list */
+    line-height: 1.6; /* Improve readability */
+  }
+
+  /* Reset font weight for items in ordered lists */
+  .markdown-content ol > li {
+    font-weight: normal; /* Reset font weight for ordered list items */
+  }
+
+  /* Additional styles for unordered list items */
+  .markdown-content ul li {
+    margin-bottom: 0.5rem; /* Space between list items */
+    font-weight: normal; /* Ensure list items are not bold */
+  }
+}

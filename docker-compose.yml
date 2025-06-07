@@ -1,0 +1,74 @@
+version: "3.8"
+
+services:
+  # backend:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.backend
+  #   container_name: govkb-backend
+  #   networks:
+  #     - govkb_network
+  #   ports:
+  #     - "8000:8000"
+  #   environment:
+  #     - DATABASE_HOST=postgres
+  #     - DATABASE_PORT=5432
+  #     - PG_DB_CONNECTION_STRING=${PG_DB_CONNECTION_STRING}
+
+  #     # aws-vault
+  #     - AWS_VAULT=${AWS_VAULT}
+  #     - AWS_REGION=${AWS_REGION}
+  #     - AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION}
+  #     - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+  #     - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+  #     - AWS_SESSION_TOKEN=${AWS_SESSION_TOKEN}
+  #     - AWS_CREDENTIAL_EXPIRATION=${AWS_CREDENTIAL_EXPIRATION}
+
+  #     # for older versions of aws-vault
+  #     - AWS_SECURITY_TOKEN=${AWS_SECURITY_TOKEN}
+  #     - AWS_SESSION_EXPIRATION=${AWS_SESSION_EXPIRATION}
+  #   volumes:
+  #     - ./backend:/app/backend
+  #   depends_on:
+  #     - postgres
+
+  # frontend:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.frontend
+  #   container_name: govkb-frontend
+  #   networks:
+  #     - govkb_network
+  #   ports:
+  #     - "5173:5173"
+  #   volumes:
+  #     - ./frontend:/app/frontend
+  #   depends_on:
+  #     - backend
+
+  # This DB container is deprecated in favour of the DB container inside Converge Mono. Set up that one instead
+
+  clamav:
+    image: clamav/clamav
+    container_name: clamav
+
+  clamav_api:
+    image: benzino77/clamav-rest-api
+    container_name: clamav_api
+    ports:
+      - "8080:8080"
+    environment:
+      NODE_ENV: production
+      APP_PORT: 8080
+      APP_FORM_KEY: FILES
+      CLAMD_IP: clamav
+      APP_MAX_FILE_SIZE: 31457280
+    depends_on:
+      - clamav
+
+# networks:
+#   govkb_network:
+#     driver: bridge
+
+volumes:
+  postgres-db:
